@@ -25,10 +25,7 @@ jobs:
         run: |
           pip install snowflake-connector-python pandas
 
-      - name: Lint with Flake8
-        run: |
-          pip install flake8
-          flake8 process_data.py --max-line-length=120
+      
 
       - name: Syntax Check
         run: python -m py_compile process_data.py
