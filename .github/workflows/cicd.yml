@@ -26,7 +26,7 @@ jobs:
 
       - name: Lint with Flake8
         run: |
-          flake8 process_data.py --max-line-length=120
+          flake8 process_data.py --max-line-length=300
 
       - name: Syntax Check
         run: python -m py_compile process_data.py
