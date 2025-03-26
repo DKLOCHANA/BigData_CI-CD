@@ -9,7 +9,6 @@ on:
     - cron: '0 */3 * * *'  # Runs every 3 hours (e.g., 00:00, 03:00, 06:00 UTC)
 
 jobs:
-  # Continuous Integration: Check Code
   ci:
     runs-on: ubuntu-latest
     steps:
@@ -23,14 +22,15 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install snowflake-connector-python pandas
+          pip install snowflake-connector-python pandas flake8
 
-      
+      - name: Lint with Flake8
+        run: |
+          flake8 process_data.py --max-line-length=120
 
       - name: Syntax Check
         run: python -m py_compile process_data.py
 
-  # Continuous Deployment: Process Data
   cd:
     needs: ci
     runs-on: ubuntu-latest
